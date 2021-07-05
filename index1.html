@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Stroke Prediction</title>
+</head>
+
+<body>
+
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Heart Stroke Prediction</h2>
+
+            <h3>Age of the Patient</h3>
+            <input id="age" name="age" type="number ">
+
+            
+            
+            <h3>Anameia</h3><br><select name="anameia" id="anameia" required="required">
+                <option value="1">Anameia</option>
+                <option value="0">Not Anameia</option>    
+            </select>
+
+
+            <h3>Creatinine_phosphokinase level</h3>
+            <input id="creatinine_phosphokinase" name="creatinine_phosphokinase" type="number ">
+
+            <h3>Diabetes</h3><br><select name="diabetes" id="diabetes" required="required">
+                <option value="1">Diabetes</option>
+                <option value="0">Not Diabetes</option>    
+            </select>
+
+
+            <h3>Ejection_fraction level</h3>
+            <input id="ejection_fraction" name="ejection_fraction" type="number ">
+
+            <h3>High_blood_pressure</h3><br><select name="high_blood_pressure" id="high_blood_pressure" required="required">
+                <option value="1">High_blood_pressure</option>
+                <option value="0">Not High_blood_pressure</option>    
+            </select>
+
+            <h3>Platelets level</h3>
+            <input id="platelets" name="platelets" type="number ">
+
+            <h3>Serum_creatinine level</h3>
+            <input id="serum_creatinine" name="serum_creatinine" type="number ">
+
+            <h3>Serum_sodium level</h3>
+            <input id="serum_sodium" name="serum_sodium" type="number ">
+
+
+            <h3>Gender</h3><br><select name="sex" id="sex" required="required">
+                <option value="1">Male</option>
+                <option value="0">Female</option>    
+            </select>
+
+
+            <h3>Smoking Habbit</h3><br><select name="smoking" id="smoking" required="required">
+                <option value="1">Smoking</option>
+                <option value="0">Not Smoking</option>    
+            </select>
+
+
+            <h3>Time</h3>
+            <input id="time" name="time" type="number ">
+
+
+
+
+            
+            <br><br><button id="sub" type="submit ">Predict Heart-Failure</button>
+            <br>
+
+            <br><br><h3>{{ prediction_text }}<h3>
+            </div>
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+    <style>
+        body {
+            background-color: rgb(9, 109, 39);
+            text-align: center;
+            padding: 0px;
+        }
+        
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #age {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+        
+
+
+
+
+        #anameia {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #anameia:hover {
+            background-color: coral;
+        }
+        
+        
+
+        #creatinine_phosphokinase {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        
+        #diabetes {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #diabetes:hover {
+            background-color: coral;
+        }
+
+
+        #ejection_fraction {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+        #high_blood_pressure {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #high_blood_pressure:hover {
+            background-color: coral;
+        }
+
+        #platelets {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+        #serum_creatinine {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+        #serum_sodium {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+        #sex {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #sex:hover {
+            background-color: coral;
+        }
+
+
+        #smoking {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #smoking:hover {
+            background-color: coral;
+        }
+
+
+        #time {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+
+
+
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+    </style>
+</body>
+
+</html>
